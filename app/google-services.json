@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1016989250520",
+    "firebase_url": "https://iqkids-564c9.firebaseio.com",
+    "project_id": "iqkids-564c9",
+    "storage_bucket": "iqkids-564c9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016989250520:android:b3248baeebbb921a",
+        "android_client_info": {
+          "package_name": "com.graduation.project.IQInterviewKids"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016989250520-al98jlt8q0bq6tm7vlgdnbc89mo9rei8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.graduation.project.IQInterviewKids",
+            "certificate_hash": "c8d8a746ddf526ae1350720d952a9868da226c38"
+          }
+        },
+        {
+          "client_id": "1016989250520-tabu7ldegbqavv4apv2p66r5s4ubq0eh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHhXPtUOnfUiixGM99lm8kdd5Cq2YlSQQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016989250520-tabu7ldegbqavv4apv2p66r5s4ubq0eh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

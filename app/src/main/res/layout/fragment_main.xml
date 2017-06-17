@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
+        android:enabled="true"
+        android:gravity="center_vertical"
+        android:maxLines="100"
+        android:paddingLeft="10dp"
+        android:scrollbars="vertical"
+        android:text="Text for the question"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textIsSelectable="false" />
+
+
+    <LinearLayout
+        android:id="@+id/answers_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/answer_a_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top">
+
+            <CheckBox
+                android:id="@+id/answerA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="0"
+                android:maxLines="100"
+                android:scrollbars="vertical"
+                android:text="Varianta A" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/answer_b_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/answerB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="false"
+                android:hint="1"
+                android:maxLines="100"
+                android:scrollbars="vertical"
+                android:text="Varianta B" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/answer_c_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/answerC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="2"
+                android:maxLines="100"
+                android:scrollbars="vertical"
+                android:text="Varianta C" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/answer_d_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/answerD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="3"
+                android:maxLines="100"
+                android:scrollbars="vertical"
+                android:text="Varianta D" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginRight="20dp"
+        android:onClick="FinishTest"
+        android:text="Submit"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="40sp" />
+</LinearLayout>
