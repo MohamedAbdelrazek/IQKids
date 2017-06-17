@@ -1,4 +1,5 @@
 package com.graduation.project.IQInterviewKids.activity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,11 +12,11 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
-import com.graduation.project.IQInterviewKids.QuestionPagerAdapter;
 import com.graduation.project.IQInterviewKids.Data.MyServerData;
 import com.graduation.project.IQInterviewKids.Data.Question;
-import com.graduation.project.IQInterviewKids.ResultBundle;
+import com.graduation.project.IQInterviewKids.QuestionPagerAdapter;
 import com.graduation.project.IQInterviewKids.R;
+import com.graduation.project.IQInterviewKids.ResultBundle;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,7 +38,7 @@ public class IQTestActivity extends AppCompatActivity {
         questionNr = (TextView) findViewById(R.id.question_number);
         //initialize pager
         pager = (ViewPager) findViewById(R.id.qPager);
-        pagerAdapter = new QuestionPagerAdapter(getSupportFragmentManager(),"IQTest");
+        pagerAdapter = new QuestionPagerAdapter(getSupportFragmentManager(), "IQTest");
         pager.setAdapter(pagerAdapter);
         pager.setCurrentItem(1, false);
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -117,14 +118,19 @@ public class IQTestActivity extends AppCompatActivity {
             showResults();
         }
     }
+
     public void showResults() {
+
         Intent intent = new Intent(this, ResultActivity.class);
-        ResultBundle resultBundle = new ResultBundle();
-        resultBundle.mMaxscore = totalQuestions;
-        resultBundle.mActualResult = getTotalCorrectAnswer();
+        ResultBundle resultBundle = (ResultBundle) getIntent().getSerializableExtra(Intent.EXTRA_TEXT);
+        resultBundle.MaxScore = totalQuestions;
+        resultBundle.ActualResult = getTotalCorrectAnswer();
+        resultBundle.Type="IQ Test";
         intent.putExtra(Intent.EXTRA_TEXT, resultBundle);
+
         startActivity(intent);
     }
+
     private int getTotalCorrectAnswer() {
         int total = 0;
         for (int i = 0; i < MyServerData.getInstance().getAllIqQuestions().length; i++) {

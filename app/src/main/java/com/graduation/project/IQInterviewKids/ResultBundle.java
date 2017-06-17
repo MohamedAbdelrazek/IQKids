@@ -7,6 +7,15 @@ import java.io.Serializable;
  */
 
 public class ResultBundle implements Serializable {
-    public int mMaxscore;
-    public int mActualResult;
+    public String Name;
+    public String EmailAddress;
+    public String Type;
+    public int ActualResult;
+    public int MaxScore;
+    public String Date;
+
+
+
+
+
 }

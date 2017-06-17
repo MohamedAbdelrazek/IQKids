@@ -121,9 +121,10 @@ public class InterViewQuestionActivity extends AppCompatActivity {
 
     public void showResults() {
         Intent intent = new Intent(this, ResultActivity.class);
-        ResultBundle resultBundle = new ResultBundle();
-        resultBundle.mMaxscore = totalQuestions;
-        resultBundle.mActualResult = getTotalCorrectAnswer();
+        ResultBundle resultBundle = (ResultBundle) getIntent().getSerializableExtra(Intent.EXTRA_TEXT);
+        resultBundle.MaxScore = totalQuestions;
+        resultBundle.ActualResult = getTotalCorrectAnswer();
+        resultBundle.Type="Interview Question";
         intent.putExtra(Intent.EXTRA_TEXT, resultBundle);
         startActivity(intent);
     }

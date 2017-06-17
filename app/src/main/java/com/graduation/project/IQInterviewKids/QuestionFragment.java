@@ -3,7 +3,6 @@ package com.graduation.project.IQInterviewKids;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,7 @@ public class QuestionFragment extends Fragment {
         View rootView = lInflater.inflate(R.layout.fragment_main, container, false);
         int currentQuestionNumber = getArguments().getInt("position");
         String flag = getArguments().getString("flag");
-        Log.i("ZOKA","currentQuestionNumber == "+currentQuestionNumber);
+
         if (flag == "Interview") {
             currentQuestion = MyServerData.getInstance().getInterviewQuestionNumber(currentQuestionNumber);
         } else {
