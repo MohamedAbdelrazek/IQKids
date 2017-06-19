@@ -1,8 +1,7 @@
 package com.graduation.project.IQInterviewKids.activity;
 
-import android.content.Context;
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -11,24 +10,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.graduation.project.IQInterviewKids.Data.MyServerData;
 import com.graduation.project.IQInterviewKids.R;
 import com.graduation.project.IQInterviewKids.ResultBundle;
-
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     private Button mIqTest;
     private Button mInterviewTest;
     private FirebaseAuth mFirebaseAuth;
-    private FirebaseUser mFirebaseUser;
     private FirebaseAuth.AuthStateListener zAuthStateListener;
     private ResultBundle mResultBundle;
 
@@ -63,56 +57,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-
-        zAuthStateListener = new FirebaseAuth.AuthStateListener() {
-
-
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                if (user != null) {
-
-                } else {
-                    // User is signed out
-
-
-                    startActivityForResult(
-                            AuthUI.getInstance()
-                                    .createSignInIntentBuilder().setIsSmartLockEnabled(false)
-                                    .setAvailableProviders(
-                                            Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
-                                                    new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build())).setLogo(R.drawable.ic_launcher)
-                                    .build(),
-                            214);
-
-                }
-            }
-        };
-
-        //exit the app if there is no internet connection !!
-        if (!isNetworkConnected()) {
-            Toast.makeText(this, "Check your internet connection !", Toast.LENGTH_LONG).show();
-            finish();
-        }
-
-
         mResultBundle = new ResultBundle();
         mResultBundle.EmailAddress = mFirebaseAuth.getCurrentUser().getEmail();
         mResultBundle.Name = mFirebaseAuth.getCurrentUser().getDisplayName();
+
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mFirebaseAuth.addAuthStateListener(zAuthStateListener);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mFirebaseAuth.removeAuthStateListener(zAuthStateListener);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -127,14 +77,8 @@ public class MainActivity extends AppCompatActivity {
 
 
             case R.id.sign_out_menu:
-                mFirebaseAuth.signOut();
-                AuthUI.getInstance()
-                        .signOut(this)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            public void onComplete(@NonNull Task<Void> task) {
-                                finish();
-                            }
-                        });
+
+                cleanUp();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -142,10 +86,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private boolean isNetworkConnected() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+    private void cleanUp() {
 
-        return cm.getActiveNetworkInfo() != null;
+        ProgressDialog pd = new ProgressDialog(MainActivity.this);
+        pd.setMessage("loading");
+        pd.show();
+        AuthUI.getInstance()
+                .signOut(this)
+
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(getApplicationContext(), SignInActivity.class));
+                            finish();
+                        }
+                    }
+                });
     }
-
 }

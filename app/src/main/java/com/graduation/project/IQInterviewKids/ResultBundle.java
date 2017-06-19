@@ -13,6 +13,7 @@ public class ResultBundle implements Serializable {
     public int ActualResult;
     public int MaxScore;
     public String Date;
+    public String State;
 
 
 

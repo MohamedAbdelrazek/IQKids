@@ -29,13 +29,22 @@ public class ResultActivity extends AppCompatActivity {
 
 
         ResultBundle resultBundle = (ResultBundle) getIntent().getSerializableExtra(Intent.EXTRA_TEXT);
-        resultBundle.Date=DateFormat.getDateTimeInstance().format(new Date());
+
+        if (resultBundle.Type.equals("IQ Test")) {
+            resultBundle.State = getIQState(resultBundle.ActualResult);
+
+        } else {
+            resultBundle.State = getInterViewState(resultBundle.ActualResult);
+
+        }
+
+        resultBundle.Date = DateFormat.getDateTimeInstance().format(new Date());
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("Kids_Name").child(resultBundle.Name).push().setValue(resultBundle);
+        mDatabase.child("KidsName").child(resultBundle.Name).push().setValue(resultBundle);
 
         mMainMenu = (Button) findViewById(R.id.main_menu_btn);
         mResult = (TextView) findViewById(R.id.result_txt_view);
-        mResult.setText(resultBundle.ActualResult + " / " + (resultBundle.MaxScore - 1));
+        mResult.setText(resultBundle.State + " ~ " + resultBundle.ActualResult + " / " + (resultBundle.MaxScore - 1));
 
         mMainMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,5 +58,22 @@ public class ResultActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private String getInterViewState(int actualResult) {
+
+        if (actualResult >= 18) {
+            return "Accepted";
+        }
+        return "Rejected";
+    }
+
+
+    private String getIQState(int actualResult) {
+        if (actualResult >= 30)
+            return "Excellent, You  are genius !";
+        else if (actualResult >= 20)
+            return "Good";
+        else return "Failed!";
     }
 }
