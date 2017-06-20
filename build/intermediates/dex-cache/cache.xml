@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\Mohamed AbdelraZek\Downloads\Compressed\Multiple-Choice-Questions-Android-App-master\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ec327765934d81286bec24bd29d23bd94fe959e0">
-        <dex dex="C:\Users\Mohamed AbdelraZek\Downloads\Compressed\Multiple-Choice-Questions-Android-App-master\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_e8b0972f4631888df26cbd79693459813c61d832\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Mohamed AbdelraZek\Downloads\Compressed\Multiple-Choice-Questions-Android-App-master\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
         <dex dex="C:\Users\Mohamed AbdelraZek\Downloads\Compressed\Multiple-Choice-Questions-Android-App-master\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_4c31ddd439761dda04487c3daf2791c240ac7360\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Mohamed AbdelraZek\Downloads\Compressed\Multiple-Choice-Questions-Android-App-master\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="19b1b0aa9b16c5b8242791c4ccb378ff8685fa72">
+        <dex dex="C:\Users\Mohamed AbdelraZek\Downloads\Compressed\Multiple-Choice-Questions-Android-App-master\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_e8b0972f4631888df26cbd79693459813c61d832\classes.dex" />
     </item>
     <item
         is-multidex="true"

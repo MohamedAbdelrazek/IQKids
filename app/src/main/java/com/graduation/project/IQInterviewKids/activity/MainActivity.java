@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent Quiz = new Intent(getApplicationContext(), IQTestActivity.class);
                 MyServerData.getInstance().setTestState("inProgress");
                 Quiz.putExtra(Intent.EXTRA_TEXT, mResultBundle);
-
                 startActivity(Quiz);
             }
         });
@@ -104,5 +103,4 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
 }

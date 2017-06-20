@@ -2,7 +2,6 @@ package com.graduation.project.IQInterviewKids;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,13 +33,11 @@ public class QuestionFragment extends Fragment {
 
         question.setText(currentQuestion.getQuestionText());
 
-        //initialize answers
         answersContainer = (LinearLayout) rootView.findViewById(R.id.answers_container);
         String[] answers = currentQuestion.getAllChooses();
         for (int i = 0; i < answersContainer.getChildCount(); i++) {
             RelativeLayout checkboxContainer = (RelativeLayout) answersContainer.getChildAt(i);
             CheckBox cb = (CheckBox) checkboxContainer.getChildAt(0);
-            cb.setMovementMethod(new ScrollingMovementMethod());
             cb.setText(answers[i]);
             cb.setChecked(currentQuestion.isChecked(i));
 

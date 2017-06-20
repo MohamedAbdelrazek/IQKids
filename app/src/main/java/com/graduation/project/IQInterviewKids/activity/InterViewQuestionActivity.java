@@ -1,6 +1,5 @@
 package com.graduation.project.IQInterviewKids.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -9,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.graduation.project.IQInterviewKids.Data.MyServerData;
@@ -52,9 +50,6 @@ public class InterViewQuestionActivity extends AppCompatActivity {
                 int currentQuestion = pager.getCurrentItem();
 
                 questionNr.setText("" + currentQuestion);
-                questionNr.clearFocus();
-                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(questionNr.getWindowToken(), 0);
             }
 
             @Override
@@ -130,13 +125,13 @@ public class InterViewQuestionActivity extends AppCompatActivity {
     }
 
     private int getTotalCorrectAnswer() {
-        int total = 0;
+        int totalCorrectAnswers = 0;
         for (int i = 0; i < MyServerData.getInstance().getAllInterviewQuestions().length; i++) {
             Boolean isCorrect = Arrays.equals(MyServerData.getInstance().getAllInterviewQuestions()[i].getAllCorrectAnswers(), MyServerData.getInstance().getAllInterviewQuestions()[i].getUserAnswers());
             if (isCorrect) {
-                total++;
+                totalCorrectAnswers++;
             }
         }
-        return total;
+        return totalCorrectAnswers;
     }
 }
